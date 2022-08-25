@@ -67,3 +67,25 @@ function determineWinnerTest(){
   let testResult5 = determineWinner("Scissors","Rock");
   testResult5 === "You Lose!" ? console.log("Lose condition test PASSED"):console.log("Lose condition test FAILED");
 }
+
+function formatUserInput(userInput){
+  let formatedInput = userInput.toLowerCase();
+  formatedInput = formatedInput.substring(0,1).toUpperCase() + formatedInput.substring(1);
+  return formatedInput;
+}
+
+function formatUserInputTest(){
+  //Testing all lowercase input
+  let test1 = formatUserInput("abcd");
+  test1==="Abcd"?console.log("all lowerCase PASSED"):console.log("all lowerCase FAILED");
+
+  //Testing all uppercase input
+  let test2 = formatUserInput("ABCD");
+  test2==="Abcd"?console.log("all uppercasse PASSED"):console.log("all uppercase FAILED");
+
+  //Testintg random casing input
+  let test3 = formatUserInput("AbCd");
+  test3==="Abcd"?console.log("random casing PASSED"):console.log("random casing FAILED");
+}
+
+formatUserInputTest();
