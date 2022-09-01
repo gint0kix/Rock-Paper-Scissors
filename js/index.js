@@ -120,8 +120,7 @@ function isValidInput(userInput) {
   return false;
 }
 
-function playRound() {
-  let userInput = prompt("Please Enter Rock, Paper, or Scissors");
+function playRound(userInput) {
   let formatedInput = formatUserInput(userInput);
   if (isValidInput(formatedInput)) {
     let computerChoice = getComputerChoice();
@@ -148,3 +147,12 @@ function game(numberOfGames = 5) {
   }
   console.log(`You won ${winCounter} times! \\(^.^)/`)
 }
+
+const PLAYER_CHOICE_BUTTONS = document.querySelectorAll(`.choiceButtons`);
+PLAYER_CHOICE_BUTTONS.forEach((button)=>{
+  button.addEventListener('click',(e)=>{
+    let round = playRound(e.target.value);
+    console.log(round.result);
+  });
+})
+
