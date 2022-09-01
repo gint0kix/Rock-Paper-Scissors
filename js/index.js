@@ -148,11 +148,18 @@ function game(numberOfGames = 5) {
   console.log(`You won ${winCounter} times! \\(^.^)/`)
 }
 
+function playerChoiceButtonHandler(e){
+  const PLAYER_CHOICE = e.target.value;
+  const ROUND = playRound(PLAYER_CHOICE);
+  const RESULT_DISPLAY = document.querySelector(`#result`);
+  RESULT_DISPLAY.textContent=`YOU ${ROUND.result}`;
+
+
+}
 const PLAYER_CHOICE_BUTTONS = document.querySelectorAll(`.choiceButtons`);
 PLAYER_CHOICE_BUTTONS.forEach((button)=>{
   button.addEventListener('click',(e)=>{
-    let round = playRound(e.target.value);
-    console.log(round.result);
+    playerChoiceButtonHandler(e);
   });
 })
 
