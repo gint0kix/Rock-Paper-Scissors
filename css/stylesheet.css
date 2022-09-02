@@ -1,16 +1,43 @@
+
 body{
+    height:100%;
+    width:100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-#container{
-    display: flex;
-    flex-direction: column;
     flex:1;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    gap:1em;
+    flex-wrap: wrap;
+}
+#Header{
+    margin-bottom: 1em;
 }
 #choiceContainer{
     display: flex;
     flex:1;
+    width:100%;
+    align-self: flex-end;
+    justify-content: space-evenly;
+}
+#roundResult{
+    font-size: 75px;
+    text-align: center;
+}
+#resultContainer{
+    display: flex;
+    align-items: center;
+    width:100%;
+    flex-direction: column;
+    margin-bottom: 2em;
+}
+#scoreContainer{
+    display:flex;
+    width:100%;
+    justify-content: space-evenly;
+}
+.choiceButtons{
+    font-size:5em;
+    padding: 0.5em;
+    border-radius: 10px;
 }

@@ -147,16 +147,38 @@ function game(numberOfGames = 5) {
   }
   console.log(`You won ${winCounter} times! \\(^.^)/`)
 }
+let playerScore = 0;
+let computerScore = 0;
 
 function playerChoiceButtonHandler(e){
   const PLAYER_CHOICE = e.target.value;
   const ROUND = playRound(PLAYER_CHOICE);
-  const RESULT_DISPLAY = document.querySelector(`#result`);
-  RESULT_DISPLAY.textContent=`YOU ${ROUND.result}`;
+  let {result, userChoice,computerChoice} ={...ROUND};
+  if(result==="Win"){
+    playerScore++;
+  }else if(result==="Lose"){
+    computerScore++;
+  }
+  const RESULT_DISPLAY = document.querySelector(`#roundResult`);
+  RESULT_DISPLAY.textContent=`You ${result} this round`;
+  const PLAYER_SCORE_DISPLAY = document.querySelector(`#playerScore`);
+  const COMPUTER_SCORE_DISPLAY = document.querySelector(`#computerScore`);
+  PLAYER_SCORE_DISPLAY.textContent = `Player Score: ${playerScore}`;
+  COMPUTER_SCORE_DISPLAY.textContent = `Computer Score: ${computerScore}`;
 
-
+  if(playerScore==5){
+    RESULT_DISPLAY.textContent=`YOU WON THE GAME! \nCLICK AN OPTION TO BEGIN NEW GAME`
+    playerScore=0;
+    computerScore=0;
+  }else if(computerScore==5){
+    RESULT_DISPLAY.textContent=`COMPUTER WON THE GAME \nCLICK AN OPTION TO BEGIN NEW GAME`
+    computerScore=0;
+    playerScore=0;
+  }
 }
+
 const PLAYER_CHOICE_BUTTONS = document.querySelectorAll(`.choiceButtons`);
+
 PLAYER_CHOICE_BUTTONS.forEach((button)=>{
   button.addEventListener('click',(e)=>{
     playerChoiceButtonHandler(e);
